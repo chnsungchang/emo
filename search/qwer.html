@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafneect</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <!-- title icon  -->
+    <link rel="icon" href="coffeeicon1.png">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic|Poiret+One|Dancing+Script);
+
+        .nav-link {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .filter-item>a {
+            padding: 3px 5px;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-decoration: none;
+        }
+
+        .filter-item>a:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        .ds {
+            /* -lifekit-transform: scale(0); */
+            /* transform: scale(0); */
+            -lifekit-transition: all 350ms ease;
+            transition: all 350ms ease;
+        }
+
+        .scale {
+            transform: scale(1);
+        }
+
+        img {
+            border: 0;
+            max-width: 100%;
+        }
+
+
+        html,
+        body {
+            font-family: 'Lato', sans-serif;
+            min-height: 100%;
+            height: 100%;
+            width: 100%;
+            background: #ffffff;
+        }
+
+        #top {
+            font-family: 'Dancing Script', cursive;
+            color: #1E88E5;
+            font-size: 2.5em;
+            text-align: center;
+            -webkit-transition: all .45s;
+            -moz-transition: all .45s;
+            -o-transition: all .45s;
+            transition: all .45s;
+        }
+
+        #myInput {
+/*            display: grid;
+            align-items: center;*/
+            width: 500px;
+            height: 40px;
+            border-radius: 1ch;
+            padding: 0.5px 0.5px 0.5px 20px;
+        }
+
+
+        h3 {
+            text-align: center;
+            font-family: 'Poiret One', cursive;
+            color: #e4b995;
+            height: 80px;
+            font-size: 67px;
+        }
+
+/*        h3 a {
+            color: inherit;
+        }*/
+
+        #filter-bar {
+            display: block;
+            background: #a06c31;
+            width: 100%;
+            min-height: 90px;
+            border-radius: 1ch;
+        }
+
+        #nav {
+            display: flex;
+            height: 71px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        #nav-bar {
+            display: table;
+            width: 100%;
+            height: 100%;
+        }
+
+        #fluid-left {
+            display: table-cell;
+            width: 50%;
+            height: 100%;
+        }
+
+        #fix-content {
+            display: table-cell;
+            width: 960px;
+            height: 90px;
+            max-width: 960px;
+            min-width: 960px;
+        }
+
+        .filter-item {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-grow: 1;
+            height: 100%;
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+            vertical-align: middle;
+
+        }
+
+
+        #fluid-right {
+            display: table-cell;
+            width: 50%;
+            height: 100%;
+        }
+
+        #grid {
+            margin: 40px auto;
+            width: 960px;
+            padding-left: 15px;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: flex;
+            height: 300px;
+            padding: 30px;
+            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+
+        .card-img-top {
+            height: 300px;
+            width: 700px;
+            margin: auto;
+        }
+
+        .second-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poiret One', cursive;
+            color: #e4b995;
+            height: 30px;
+            font-size: 67px;
+        }
+        .container {
+            height: 400px;
+            width: 1200px;
+        }
+    </style>
+</head>
+
+<body>
+
+      <!-- Start Header -->
+      <nav class="navbar sticky-top navbar-expand-lg navbar-dark"
+        style="background-color:#633f26; padding-top: 3px; padding-bottom: 3px;">
+        <a class="navbar-brand" href="../web_demo.html" style="padding-right: 10px; padding-left: 10px;">
+          <img src="z_cafnnect.png" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+        </a>
+        <div class="Cafnnect"
+          style="padding-right:65%; font-size: 25px; color: #ffffff; font-weight: 500; letter-spacing: 0.5px;">Cafnnect
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="../web_demo.html">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Feature</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Search</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- End Header -->
+
+
+    <div class="top">
+        <div style="padding: 20px;">
+            <h3>Caf.Radar</h3>
+        </div>
+        <div class="search" style="text-align: center; padding-bottom:50px;">
+            <input type="text" class="search-input" id="myInput" placeholder="Search..">
+        </div>
+
+        <div id="filter-bar">
+            <div id="nav">
+                <div id="nav-bar">
+                    <div id="fluid-left"></div>
+                    <div id="fix-content">
+                        <div class="filter-item">
+                            <a href="#" data-f="免費wifi">免費wifi</a>
+                            <a href="#" data-f="提供插座">提供插座</a>
+                            <a href="#" data-f="學區附近">學區附近</a>
+                            <a href="#" data-f="手沖咖啡">手沖咖啡</a>
+                            <a href="#" data-f="環境舒適">環境舒適</a>
+                            <a href="#" data-f="工業風">工業風</a>
+                            <a href="#" data-f="貓咪咖啡">貓咪咖啡</a>
+                            <a href="#" data-f="巷弄咖啡">巷弄咖啡</a>
+                            <a href="#" data-f="寵物友善">寵物友善</a>
+                            <a href="#" data-f="很早就開">很早就開</a>
+                        </div>
+                    </div>
+                    <div id="fluid-right"></div>
+                </div>
+            </div>
+            <div id="grid">
+                <div id="grid-content"></div>
+            </div>
+        </div>
+        <p class="second-bar"></p>
+    </div>
+
+    <div class="container">
+        <div class="row" >
+            <div class="card">
+                <img src="shop1.jpg" class="card-img-top" id="combo" alt="...">
+                <div class="card-body">
+                    <div class="coffee shop ds 免費wifi 學區附近 提供插座">
+                        <h5 class="card-title">Frinicafe</h5>
+                        <p class="card-text">臺中市西屯區</p>
+                        <p class="card-text"><small class="text-muted">免費wifi</small></p>
+                        <p class="card-text"><small class="text-muted">學區附近</small></p>
+                        <p class="card-text"><small class="text-muted">提供插座</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="shop2.jpg" class="card-img-top" id="combo" alt="...">
+                <div class="card-body">
+                    <div class="coffee shop ds 手沖咖啡 環境舒適 提供插座">
+                        <h5 class="card-title">coffee talks 頭靠咖啡</h5>
+                        <p class="card-text">臺中市北區</p>
+                        <p class="card-text"><small class="text-muted">手沖咖啡</small></p>
+                        <p class="card-text"><small class="text-muted">環境舒適</small></p>
+                        <p class="card-text"><small class="text-muted">提供插座</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="shop3.jpg" class="card-img-top" id="combo" alt="...">
+                <div class="card-body">
+                    <div class="coffee shop ds 免費wifi 學區附近 提供插座">
+                        <h5 class="card-title">Our cafe 奧兒咖啡</h5>
+                        <p class="card-text">臺中市西屯區</p>
+                        <p class="card-text"><small class="text-muted">免費wifi</small></p>
+                        <p class="card-text"><small class="text-muted">學區附近</small></p>
+                        <p class="card-text"><small class="text-muted">提供插座</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="shop4.jpg" class="card-img-top" id="combo" alt="...">
+                <div class="card-body">
+                    <div class="coffee shop ds 貓咪咖啡 免費wifi 寵物友善">
+                        <h5 class="card-title">十一精品咖啡 Potion 11 Cafe</h5>
+                        <p class="card-text">臺中市西區</p>
+                        <p class="card-text"><small class="text-muted">貓咪咖啡</small></p>
+                        <p class="card-text"><small class="text-muted">免費wifi</small></p>
+                        <p class="card-text"><small class="text-muted">寵物友善</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="shop5.jpg" class="card-img-top" id="combo" alt="...">
+                <div class="card-body">
+                    <div class="coffee shop ds 工業風 很早就開 貓咪咖啡">
+                        <h5 class="card-title">Wednesday's Flavor</h5>
+                        <p class="card-text">臺中市西區</p>
+                        <p class="card-text"><small class="text-muted">工業風</small></p>
+                        <p class="card-text"><small class="text-muted">很早就開</small></p>
+                        <p class="card-text"><small class="text-muted">貓咪咖啡</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="shop6.jpg" class="card-img-top" id="combo" alt="...">
+                <div class="card-body">
+                    <div class="coffee shop ds 寵物有善 巷弄咖啡 提供插座">
+                        <h5 class="card-title">來福好事 LAUGH HOUSE</h5>
+                        <p class="card-text">臺中市西區</p>
+                        <p class="card-text"><small class="text-muted">寵物友善</small></p>
+                        <p class="card-text"><small class="text-muted">巷弄咖啡</small></p>
+                        <p class="card-text"><small class="text-muted">提供插座</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="shop7.jpg" class="card-img-top" id="combo" alt="...">
+                <div class="card-body">
+                    <div class="coffee shop ds 寵物友善 巷弄咖啡 免費wifi">
+                        <h5 class="card-title">啡文學</h5>
+                        <p class="card-text">臺中市西區</p>
+                        <p class="card-text"><small class="text-muted">寵物友善</small></p>
+                        <p class="card-text"><small class="text-muted">巷弄咖啡</small></p>
+                        <p class="card-text"><small class="text-muted">免費wifi</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="shop8.jpg" class="card-img-top" id="combo" alt="...">
+                <div class="card-body">
+                    <div class="coffee shop ds 手沖咖啡 環境舒適 提供插座">
+                        <h5 class="card-title">復興咖啡交易所</h5>
+                        <p class="card-text">臺中市東區</p>
+                        <p class="card-text"><small class="text-muted">手沖咖啡</small></p>
+                        <p class="card-text"><small class="text-muted">環境舒適</small></p>
+                        <p class="card-text"><small class="text-muted">提供插座</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            var selectedClass = "";
+            $(".filter-item").click(function () {
+                selectedClass = $(this).attr("data-f");
+                $("#card").fadeTo(100, 0.1);
+                $("#card div").not("." + selectedClass).fadeOut().removeClass('scale');
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn().addClass('scale');
+                    $("#card").fadeTo(300, 1);
+                }, 300);
+
+                return false;
+            });
+        }); 
+    </script>
+</body>
+
+</html>
